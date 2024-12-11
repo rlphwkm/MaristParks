@@ -41,22 +41,36 @@
         </section>
     </main>
     <script>
+
         document.addEventListener("DOMContentLoaded", () => {
             fetch('./parking.json')
                 .then(response => response.json())
                 .then(data => {
                     const parkingList = document.getElementById('parking-list');
                     data.parkingLots.forEach(lot => {
-                        const listItem = document.createElement('li');
+                        const lotCard = document.createElement('div');
+                        lotCard.classList.add('lot-card');
+                
                         const link = document.createElement('a');
                         link.textContent = lot.name;
                         link.href = `lots.html?name=${encodeURIComponent(lot.name)}`;
-                        listItem.appendChild(link);
-                        parkingList.appendChild(listItem);
+                        link.classList.add('lot-link');
+
+                        const details = document.createElement('p');
+                        details.innerHTML = `
+                            <strong>Total Spaces:</strong> ${lot.totalSpaces}<br>
+                            <strong>Security Level:</strong> ${lot.securityLevel}
+                        `;
+                
+                        lotCard.appendChild(link);
+                        lotCard.appendChild(details);
+                        parkingList.appendChild(lotCard);
                     });
                 })
                 .catch(error => console.error('Error fetching parking lots:', error));
         });
+
+
     </script>
 </body>
 </html>
