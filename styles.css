@@ -19,6 +19,7 @@ header {
     display: flex;
     justify-content: center;
     background-color: red;
+    flex-wrap: wrap; /* Allow menu items to wrap for smaller screens */
 }
 
 .menu-bar li {
@@ -127,5 +128,26 @@ main {
 
     #search-bar {
         font-size: 0.9em;
+    }
+
+    .menu-bar {
+        flex-direction: column; /* Stack menu items vertically */
+    }
+
+    .menu-bar li a {
+        padding: 12px;
+        font-size: 1em; /* Adjust for smaller screens */
+    }
+
+    .lot-container {
+        margin-bottom: 15px; /* Reduce spacing for smaller screens */
+    }
+
+    .lot-container .lot-details {
+        font-size: 0.9em; /* Smaller font size for details */
+    }
+
+    .breadcrumbs {
+        font-size: 0.8em; /* Reduce breadcrumb font size */
     }
 }
