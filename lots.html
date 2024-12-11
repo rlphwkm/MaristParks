@@ -42,6 +42,16 @@
                 .then(data => {
                     parkingData = data.parkingLots;
                     displayParkingLots(parkingData);
+
+                    // Check for URL parameter and auto-expand relevant lot
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const lotName = urlParams.get('name');
+                    if (lotName) {
+                        const matchingLot = parkingData.find(lot => lot.name === lotName);
+                        if (matchingLot) {
+                            scrollToAndExpandLot(matchingLot);
+                        }
+                    }
                 })
                 .catch(error => console.error('Error fetching parking lot details:', error));
 
@@ -68,8 +78,10 @@
                         const expanded = document.querySelector('.lot-container.expanded');
                         if (expanded && expanded !== lotContainer) {
                             expanded.classList.remove('expanded');
+                            expanded.querySelector('.lot-details').style.display = 'none';
                         }
                         lotContainer.classList.toggle('expanded');
+                        lotDetails.style.display = lotDetails.style.display === 'none' ? 'block' : 'none';
                     });
                     lotContainer.appendChild(lotHeader);
 
@@ -103,13 +115,20 @@
                     }
 
                     lotDetails.style.display = 'none';
-                    lotHeader.addEventListener('click', () => {
-                        lotDetails.style.display = lotDetails.style.display === 'none' ? 'block' : 'none';
-                    });
-
                     lotContainer.appendChild(lotDetails);
                     parkingDetails.appendChild(lotContainer);
                 });
+            }
+
+            function scrollToAndExpandLot(lot) {
+                const lotContainer = [...document.querySelectorAll('.lot-container')]
+                    .find(container => container.querySelector('.toggle-button').textContent === lot.name);
+                if (lotContainer) {
+                    lotContainer.classList.add('expanded');
+                    const lotDetails = lotContainer.querySelector('.lot-details');
+                    lotDetails.style.display = 'block';
+                    lotContainer.scrollIntoView({ behavior: 'smooth' });
+                }
             }
         });
     </script>
