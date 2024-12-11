@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Lots</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="menu-bar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="./lots.html">Parking Lots</a></li>
+                <li><a href="map.html">Map</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <nav class="breadcrumbs">
+            <a href="index.html">Home</a> > <span>Parking Lots</span>
+        </nav>
+        <section class="content-container">
+            <div class="parking-lots">
+                <h2>Available Parking Lots</h2>
+                <div id="parking-details"></div>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('./parking.json')
+                .then(response => response.json())
+                .then(data => {
+                    const parkingDetails = document.getElementById('parking-details');
+                    data.parkingLots.forEach(lot => {
+                        const lotContainer = document.createElement('div');
+                        lotContainer.classList.add('lot-container');
+
+                        const lotHeader = document.createElement('h3');
+                        lotHeader.textContent = lot.name;
+                        lotContainer.appendChild(lotHeader);
+
+                        const lotInfo = document.createElement('p');
+                        lotInfo.innerHTML = `
+                            <strong>Comments:</strong> ${lot.comments}<br>
+                            <strong>Operational Hours:</strong> ${lot.operationalHours}<br>
+                            <strong>Security Level:</strong> ${lot.securityLevel}<br>
+                            <strong>Total Spaces:</strong> ${lot.totalSpaces}
+                        `;
+                        lotContainer.appendChild(lotInfo);
+
+                        if (lot.parkingSpaces) {
+                            const spaceList = document.createElement('ul');
+                            spaceList.innerHTML = '<strong>Parking Spaces:</strong>';
+
+                            lot.parkingSpaces.forEach(space => {
+                                const spaceItem = document.createElement('li');
+                                spaceItem.innerHTML = `
+                                    Space ID: ${space.spaceID} | 
+                                    Type: ${space.type} | 
+                                    Status: ${space.status} | 
+                                    Reserved: ${space.reservedDateTime || 'N/A'} | 
+                                    Filled: ${space.filledDateTime || 'N/A'}
+                                `;
+                                spaceList.appendChild(spaceItem);
+                            });
+                            lotContainer.appendChild(spaceList);
+                        }
+
+                        parkingDetails.appendChild(lotContainer);
+                    });
+                })
+                .catch(error => console.error('Error fetching parking lot details:', error));
+        });
+    </script>
+</body>
+</html>
