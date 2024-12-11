@@ -202,3 +202,21 @@ main {
         flex: 1 1 calc(100% - 20px); /* Full-width for smaller screens */
     }
 }
+
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f9f9f9;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    font-size: 0.9em;
+    color: #333;
+}
+
+footer p {
+    margin: 0;
+}
