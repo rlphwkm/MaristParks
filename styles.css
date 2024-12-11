@@ -19,7 +19,7 @@ header {
     display: flex;
     justify-content: center;
     background-color: red;
-    flex-wrap: wrap; /* Allow menu items to wrap for smaller screens */
+    /*flex-wrap: wrap; /* Allow menu items to wrap for smaller screens */
 }
 
 .menu-bar li {
@@ -65,7 +65,7 @@ main {
 }
 
 .parking-lots, .map-container {
-    flex: 1 1 48%; /* Side-by-side for large screens */
+    flex: 1 1 48%;
     background: #f9f9f9;
     padding: 15px;
     border: 1px solid #ddd;
@@ -78,7 +78,6 @@ main {
     border: none;
 }
 
-/* Styling for Parking Lots Page */
 .lot-container {
     margin-bottom: 20px;
     border: 1px solid #ddd;
@@ -163,7 +162,7 @@ main {
 }
 
 .lot-card {
-    flex: 1 1 calc(33.33% - 20px); /* Responsive cards, 3 per row */
+    flex: 1 1 calc(33.33% - 20px);
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -199,7 +198,7 @@ main {
 
 @media (max-width: 768px) {
     .lot-card {
-        flex: 1 1 calc(100% - 20px); /* Full-width for smaller screens */
+        flex: 1 1 calc(100% - 20px);
     }
 }
 
