@@ -15,6 +15,7 @@
                 <li><a href="./map.html">Map</a></li>
                 <li><a href="./about.html">About</a></li>
             </ul>
+        </nav>
     </header>
     <main>
         <nav class="breadcrumbs">
@@ -41,7 +42,6 @@
                     parkingData = data.parkingLots;
                     displayParkingLots(parkingData);
 
-                    // Check for URL parameter and auto-expand relevant lot
                     const urlParams = new URLSearchParams(window.location.search);
                     const lotName = urlParams.get('name');
                     if (lotName) {
@@ -90,7 +90,8 @@
                             <strong>Comments:</strong> ${lot.comments}<br>
                             <strong>Operational Hours:</strong> ${lot.operationalHours}<br>
                             <strong>Security Level:</strong> ${lot.securityLevel}<br>
-                            <strong>Total Spaces:</strong> ${lot.totalSpaces}
+                            <strong>Total Spaces:</strong> ${lot.totalSpaces}<br>
+                            <strong>Empty Spots:</strong> ${lot.emptySpots}
                         </p>
                     `;
 
