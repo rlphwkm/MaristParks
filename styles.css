@@ -118,7 +118,7 @@ main {
 
 @media (max-width: 768px) {
     .content-container {
-        flex-direction: column; /* Stack for smaller screens */
+        flex-direction: column;
     }
 
     .lot-container .toggle-button {
@@ -131,23 +131,74 @@ main {
     }
 
     .menu-bar {
-        flex-direction: column; /* Stack menu items vertically */
+        flex-direction: column;
     }
 
     .menu-bar li a {
         padding: 12px;
-        font-size: 1em; /* Adjust for smaller screens */
+        font-size: 1em;
     }
 
     .lot-container {
-        margin-bottom: 15px; /* Reduce spacing for smaller screens */
+        margin-bottom: 15px;
     }
 
     .lot-container .lot-details {
-        font-size: 0.9em; /* Smaller font size for details */
+        font-size: 0.9em;
     }
 
     .breadcrumbs {
-        font-size: 0.8em; /* Reduce breadcrumb font size */
+        font-size: 0.8em;
+    }
+}
+
+
+#parking-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.lot-card {
+    flex: 1 1 calc(33.33% - 20px); /* Responsive cards, 3 per row */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.lot-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.lot-link {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: block;
+    transition: color 0.3s;
+}
+
+.lot-link:hover {
+    color: red;
+}
+
+.lot-card p {
+    margin: 10px 0 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .lot-card {
+        flex: 1 1 calc(100% - 20px); /* Full-width for smaller screens */
     }
 }
