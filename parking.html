@@ -48,10 +48,10 @@
                     const parkingList = document.getElementById('parking-list');
                     data.parkingLots.forEach(lot => {
                         const listItem = document.createElement('li');
-                        const link = document.createElement('a');
-                        link.textContent = lot.name;
+                        //const link = document.createElement('a');
+                        //link.textContent = lot.name;
                         //link.href = `parking-lot.html?name=${encodeURIComponent(lot.name)}`;
-                        listItem.appendChild(link);
+                        //listItem.appendChild(link);
                         parkingList.appendChild(listItem);
                     });
                 })
