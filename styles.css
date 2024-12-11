@@ -19,7 +19,7 @@ header {
     display: flex;
     justify-content: center;
     background-color: red;
-    /*flex-wrap: wrap; /* Allow menu items to wrap for smaller screens */
+    flex-wrap: wrap;
 }
 
 .menu-bar li {
