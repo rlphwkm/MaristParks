@@ -1,0 +1,5 @@
+[
+    { "id": "lot1", "name": "North Lot", "spots": 50 },
+    { "id": "lot2", "name": "South Lot", "spots": 75 },
+    { "id": "lot3", "name": "East Lot", "spots": 100 }
+]
